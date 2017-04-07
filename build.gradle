@@ -1,0 +1,61 @@
+// Apply the java plugin to add support for Java
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+def myAppName = 'Endian'
+def myAppVersion = '0.0.1'
+
+group = 'jp.harujioh'
+version = myAppVersion
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    jcenter()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+
+    // junit
+    testCompile 'junit:junit:4.12'
+}
+
+javadoc {
+    options.charSet = 'UTF-8'
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    from sourceSets.main.allSource
+}
+
+ext {
+    mavenRepository = file('maven')
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file:${projectDir}")
+        }
+    }
+}
+
+[install.repositories.mavenInstaller, uploadArchives.repositories.mavenDeployer]*.pom*.whenConfigured { pom ->
+    pom.project {
+        inceptionYear '2016'
+        packaging 'jar'
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
+        }
+    }
+}
