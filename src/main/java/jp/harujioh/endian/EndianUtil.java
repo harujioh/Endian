@@ -53,4 +53,17 @@ class EndianUtil {
 
 		return byteBuffer;
 	}
+
+	/**
+	 * ByteBufferからint[]型のバッファを返す
+	 * 
+	 * @param byteBuffer
+	 * @return int[]型のバッファ
+	 */
+	public static int[] getBuffer(ByteBuffer byteBuffer) {
+		byte[] buf = byteBuffer.array();
+		return IntStream.range(0, buf.length) //
+				.map(i -> buf[i] & 0xff) //
+				.toArray();
+	}
 }
