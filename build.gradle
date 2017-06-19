@@ -5,7 +5,7 @@ plugins {
 }
 
 def myAppName = 'Endian'
-def myAppVersion = '0.0.1'
+def myAppVersion = '0.0.2'
 
 group = 'jp.harujioh'
 version = myAppVersion
