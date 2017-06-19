@@ -1,5 +1,6 @@
 package jp.harujioh.endian;
 
+import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 /**
@@ -8,6 +9,17 @@ import java.nio.ByteOrder;
  * @author rhirata
  */
 public class LittleEndianUtil {
+
+	/**
+	 * short値のバッファを取得
+	 * 
+	 * @param value
+	 *            値
+	 * @return バッファ
+	 */
+	public static int[] getShortBuffer(short value) {
+		return EndianUtil.getBuffer(ByteBuffer.allocate(Short.BYTES).order(ByteOrder.LITTLE_ENDIAN).putShort(value));
+	}
 
 	/**
 	 * バッファからshort値を取得
@@ -40,6 +52,17 @@ public class LittleEndianUtil {
 	 */
 	public static short getShort(int[] buffer, int offset, int length) {
 		return EndianUtil.createByteBuffer(ByteOrder.LITTLE_ENDIAN, buffer, offset, length, Short.BYTES).getShort(0);
+	}
+
+	/**
+	 * int値のバッファを取得
+	 * 
+	 * @param value
+	 *            値
+	 * @return バッファ
+	 */
+	public static int[] getIntBuffer(int value) {
+		return EndianUtil.getBuffer(ByteBuffer.allocate(Integer.BYTES).order(ByteOrder.LITTLE_ENDIAN).putInt(value));
 	}
 
 	/**
@@ -76,6 +99,17 @@ public class LittleEndianUtil {
 	}
 
 	/**
+	 * long値のバッファを取得
+	 * 
+	 * @param value
+	 *            値
+	 * @return バッファ
+	 */
+	public static int[] getLongBuffer(long value) {
+		return EndianUtil.getBuffer(ByteBuffer.allocate(Long.BYTES).order(ByteOrder.LITTLE_ENDIAN).putLong(value));
+	}
+
+	/**
 	 * バッファからlong値を取得
 	 * 
 	 * @param buffer
@@ -109,6 +143,17 @@ public class LittleEndianUtil {
 	}
 
 	/**
+	 * float値のバッファを取得
+	 * 
+	 * @param value
+	 *            値
+	 * @return バッファ
+	 */
+	public static int[] getFloatBuffer(float value) {
+		return EndianUtil.getBuffer(ByteBuffer.allocate(Float.BYTES).order(ByteOrder.LITTLE_ENDIAN).putFloat(value));
+	}
+
+	/**
 	 * バッファからfloat値を取得
 	 * 
 	 * @param buffer
@@ -139,6 +184,17 @@ public class LittleEndianUtil {
 	 */
 	public static float getFloat(int[] buffer, int offset, int length) {
 		return EndianUtil.createByteBuffer(ByteOrder.LITTLE_ENDIAN, buffer, offset, length, Float.BYTES).getFloat(0);
+	}
+
+	/**
+	 * double値のバッファを取得
+	 * 
+	 * @param value
+	 *            値
+	 * @return バッファ
+	 */
+	public static int[] getDoubleBuffer(double value) {
+		return EndianUtil.getBuffer(ByteBuffer.allocate(Double.BYTES).order(ByteOrder.LITTLE_ENDIAN).putDouble(value));
 	}
 
 	/**
